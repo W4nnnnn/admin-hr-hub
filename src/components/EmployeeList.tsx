@@ -89,7 +89,7 @@ const EmployeeList: React.FC<EmployeeListProps> = ({
                   <SelectValue placeholder="Semua Divisi" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Semua Divisi</SelectItem>
+                  <SelectItem value="all">Semua Divisi</SelectItem>
                   {divisions.map(division => (
                     <SelectItem key={division} value={division}>
                       {division}
@@ -103,7 +103,7 @@ const EmployeeList: React.FC<EmployeeListProps> = ({
                   <SelectValue placeholder="Semua Status" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Semua Status</SelectItem>
+                  <SelectItem value="all">Semua Status</SelectItem>
                   <SelectItem value="Tetap">Tetap</SelectItem>
                   <SelectItem value="Kontrak">Kontrak</SelectItem>
                   <SelectItem value="Magang">Magang</SelectItem>

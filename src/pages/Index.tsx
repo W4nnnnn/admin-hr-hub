@@ -50,8 +50,8 @@ const Index = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState<string | undefined>();
   const [searchQuery, setSearchQuery] = useState('');
-  const [divisionFilter, setDivisionFilter] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
+  const [divisionFilter, setDivisionFilter] = useState('all');
+  const [statusFilter, setStatusFilter] = useState('all');
   const [sortBy, setSortBy] = useState('name');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<'add' | 'edit'>('add');
@@ -203,8 +203,8 @@ const Index = () => {
         [employee.name, employee.position, employee.email, employee.nik]
           .some(field => field?.toLowerCase().includes(searchQuery.toLowerCase()));
       
-      const matchesDivision = !divisionFilter || employee.division === divisionFilter;
-      const matchesStatus = !statusFilter || employee.status === statusFilter;
+      const matchesDivision = !divisionFilter || divisionFilter === 'all' || employee.division === divisionFilter;
+      const matchesStatus = !statusFilter || statusFilter === 'all' || employee.status === statusFilter;
       
       return matchesSearch && matchesDivision && matchesStatus;
     });
