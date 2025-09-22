@@ -2,20 +2,28 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTheme } from "@/contexts/ThemeContext";
-import { Moon, Sun, FileDown, FileUp, UserPlus, FolderOpen } from "lucide-react";
+import { Moon, Sun, FileDown, FileUp, UserPlus, FolderOpen, LogOut } from "lucide-react";
 
 interface DashboardHeaderProps {
   onAddEmployee: () => void;
   onExportJson: () => void;
   onImportJson: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onLogout: () => void;
 }
 
 const DashboardHeader: React.FC<DashboardHeaderProps> = ({
   onAddEmployee,
   onExportJson,
   onImportJson,
+  onLogout,
 }) => {
   const { theme, toggleTheme } = useTheme();
+
+  const handleLogout = () => {
+    if (window.confirm('Apakah Anda yakin ingin logout?')) {
+      onLogout();
+    }
+  };
 
   return (
     <header className="gradient-primary text-primary-foreground shadow-hr-large">
@@ -36,6 +44,16 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
           </div>
           
           <div className="flex items-center gap-2 flex-wrap">
+            <Button
+              onClick={handleLogout}
+              variant="secondary"
+              size="sm"
+              className="bg-red-500/20 text-primary-foreground border-red-300/20 hover:bg-red-500/30 transition-hr"
+            >
+              <LogOut className="h-4 w-4 mr-2" />
+              Logout
+            </Button>
+            
             <Button
               onClick={toggleTheme}
               variant="secondary"

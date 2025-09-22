@@ -236,6 +236,12 @@ const Index = () => {
     setIsLoggedIn(true);
   };
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setSelectedEmployeeId(undefined);
+    // Optional: Clear any sensitive data or reset state
+  };
+
   const handleAddEmployee = () => {
     setModalMode('add');
     setEditingEmployee(undefined);
@@ -346,6 +352,7 @@ const Index = () => {
           onAddEmployee={handleAddEmployee}
           onExportJson={handleExportJson}
           onImportJson={handleImportJson}
+          onLogout={handleLogout}
         />
 
         <main className="mx-auto max-w-7xl px-4 py-6">
